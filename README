@@ -1,0 +1,14 @@
+:=
+	x := 35 //declaring and assigning at the same time using short declaration operator
+		//cannot exist outside the function body
+
+var
+	var v1 = 56 	//var is a keyword and this can exist outside of the function body
+			//declare the variable v1 and assign the value 56
+
+	var v2 int	//variable v2 is of type int and assigned a value of ZERO of type int
+
+%T	//is used to print the type of the variable for e.g. var x = 67 fmt.Prinft("x is of type %T\n", x)
+	//will print type as string
+
+	//go is a static typed language
