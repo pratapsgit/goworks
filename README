@@ -8,7 +8,122 @@ var
 
 	var v2 int	//variable v2 is of type int and assigned a value of ZERO of type int
 
+	var s1 string = "Hello World!"
+	var s2 string = `We can write like this "Hello World!"`	//it includes double quotes as it is
+
 %T	//is used to print the type of the variable for e.g. var x = 67 fmt.Prinft("x is of type %T\n", x)
 	//will print type as string
 
 	//go is a static typed language
+
+Primitive Data Types	-	Pre declared data types for the language
+Composed Data Types	-	Aggregate Data Types a bunch of data of the same type
+
+fmt
+	//%x hex %v value %T type 
+	//(%-fmt) pads spaces to right (%#fmt) alternate format, add leading ZERO's for octal
+	//0x for %#x and 0X for %#X and supresses 0x for %#p
+	//(0) - allways pad ZERO's rather than spaces
+
+	Print, Printf, Println		//print any type of variable
+	Sprint, Sprintf, Sprintln	//for strings
+	Fprint, Fprintf, Fprintln	//File print
+
+Create your own type
+	type AnotherInt int
+	var myvalue AnotherInt
+	myvalue = 56
+	fmt.Println(myvalue)
+	fmt.Printf("myvalue type is %T\n", myvalue)
+
+	var anotherValue int = 67
+	anotherValue = myvalue	//This is not possible, because they are of different type
+
+Conversion
+	anoteherValue = int(myValue)
+
+Numeric Types
+	uint8		uint16		uint32		uint64
+	int8		int16		int32		int64
+					float32		float64
+					unit		uint
+					int 		int
+									uintptr
+	byte				rune
+							complex64	complex128
+
+runtime
+	GOOS
+	GOARCH
+
+string
+	are immutable, once assigned cannot be changed
+
+numerics
+	decimal binary hexadecimal
+
+constants
+	const(
+		a = 42
+		s = "hello"
+	)
+
+	const(
+		a int = 42
+		s string = "hello"
+	)
+
+iota
+	pre declared identifier
+	const(
+		a=iota
+		b
+		c
+	)
+	then a becomes 0
+	b becomes 2
+	c becomes 2
+
+for loop
+	x := 10
+	for x<100{
+		fmt.Println(x)
+		x = x + 1
+	}
+
+	for i:=0; i<100; i++{
+		fmt.Println(i)
+	}
+
+	y:=20
+	for {
+		if y==524 {
+			break
+		}
+		y = y + 1
+	}
+
+	for i,v := range s{
+		fmt.Println(i, " - ", s[i])
+	}
+
+switch
+	switch{
+	}
+	looks for all true cases
+
+	switch c{
+		case x, y, z, b:
+			return true
+	}
+
+	switch f{
+		case 1:
+			fallthrough
+		case 3:
+			....
+		case 9:
+			fallthrough
+	}
+
+	when you use fallthrough it follows the fallthroughs, hence here it will execute cae 1, 9 etc.
