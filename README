@@ -127,3 +127,26 @@ switch
 	}
 
 	when you use fallthrough it follows the fallthroughs, hence here it will execute cae 1, 9 etc.
+
+array
+	declaration :  var varname [arrsize]int
+
+composite
+	elements grouped of different types
+	x := type{values}
+
+slice
+	allows you to group together values of same type
+	x := []int{ 4, 6, 8, 2}
+
+aggregate
+	array or slice with values of same type
+
+
+multidimensional array
+	m := []string{ "zero", "one"}
+	p := []string{ "two", "three"}
+	x := [][]string{m, p}
+
+map
+	x:= map[string]int{}
