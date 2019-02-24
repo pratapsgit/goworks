@@ -150,3 +150,212 @@ multidimensional array
 
 map
 	x:= map[string]int{}
+struct
+
+func
+	func (r receiver) identifier(t1 type1, t2 type2,...) (rt return) { code }
+	no argument function
+	func noArgumentFunction(){
+	}
+
+	function with one argument
+	func oneArgumentFunction(s string){
+	}
+
+	function with return value of type string
+	func withReturnValue string (s string){
+		return fmt.Sprint("Hello, ",s,". How are you?")
+	}
+
+	function with multiple return value of type return status of type int and string
+	func withMultipleReturnValue (int, string) (s string){
+		return 1, fmt.Sprint("Hello, ",s,". How are you?")
+	}
+
+	function with variable number of arguments
+	func withVariableArguments(x ...int){
+	}
+	Here the type of x is []int
+	at the calling point you call like 
+	withVariableArguments(3,7,9,12,15,17)
+
+unfurling a slice
+	if the variadic function is
+		func variadic(x ...int) int {
+		}
+
+	then
+		varadic(3,4,5,6) - is valid
+		varadic(3,4,5,6,"any_string") - is invalid
+
+	if the variadic function is
+		func variadic(s string, x ...int) int {
+		}
+	then
+		varadic("any_string") - is valid and []int is nil
+		varadic("any_string", 4,6,7,8) - is valid
+
+defer
+	Suppose there are two function's
+
+	func first_function(){
+	}
+
+	func second_function(){
+	}
+
+	if we call them now in the following sequence
+	first_function()
+	second_function()
+	the order of execution will be retained as it is
+
+	But, if we defer one of them i.e. first_function(), then order is going to change as follows
+	second_function()
+	first_function()
+	the above is a result of
+	defer fisrt_function()
+	second_function()
+	at the calling point
+
+method
+	method is defined as
+	func (s name_of_struct) processStruct(){
+		print details........
+	}
+
+	type name_of_struct struct{
+		field1 type1
+		field2 type2
+	}
+
+	at the calling point
+	obj := name_of_struct{
+		field1 : value1,
+		field2 : value2,
+	}
+
+	obj.processStruct()
+
+interface
+	If you have a method declared by an interface then you are of type interface
+	first we declare two different structures
+	type struct1 struct{
+	}
+
+	type struct2 struct{
+	}
+
+	attach the function which is going to be declared in the interface for both the struct types
+	func (s1 struct1) interface_func(){
+	}
+
+	func (s2 struct2) interface_func(){
+	}
+
+	declare the interface
+	type interface_name interface{
+		interface_func()
+	}
+
+	now pass the objects of type struct1 and struct2 to function which takes interface_name type argument
+
+	function is
+	func call_interface(inf interface_name){
+	}
+
+	at the call point
+	s1 := struct1{
+		....
+	}
+
+	s2 := struct2{
+		...
+	}
+
+	pass s1 and s2 to call_interface() function
+	call_interface(s1)
+	call_interface(s2)
+
+	Now suppose we are trying to identify the type of object passed to a generic function
+	How do we achieve that
+	func generic_function(inf interface_name){
+		switch inf.(type){
+			case struct1:
+				fmt.Println("yes we are processing struct1 %s\n",inf.(struct1).field1)
+			case struct2:
+				fmt.Println("yes we are processing struct2 %s\n",inf.(struct2).field1)
+		}
+	}
+
+	Empty interface
+	type interface_name interface{
+	}
+	anything can be put into it.
+
+Anonymous func
+	Anonymous does not have a identifier
+	func main(){
+		func(){
+			fmt.Println("I am in a anonymous function")
+		}()
+
+		func(x int){
+			fmt.Println("I am in a anonymous function with one argument", x)
+		}(67)
+	}
+
+assigning a function to a variable
+	f1 := func(){
+		fmt.Println("I am getting executed from a variable")
+	}
+	f1()
+
+	f2 := func(x string){
+		fmt.Println("I am getting executed from a variable", x)
+	}
+	f2("Argument")
+
+return a function from a function
+	We are writing a function returning a function with no argument and returns int
+	func outer_func() func() int{
+		return func() int{
+			return 200
+		}
+	}	
+	call it as
+	o := outer_func()
+	o() will result to 200
+
+	also can be called as
+	outer_func()() will result to 200
+
+callback
+	func sum(x ...int) int{
+		var total = 0
+		for _, n := range x{
+			total+=n
+		}
+
+		return total
+	}
+
+	func even(f func(...int) int, y ...int) []int{
+		var z []int
+		for _, n := range y{
+			if n%2 == 0{
+				z = append(z, n)
+			}
+		}
+		return f(z)
+	}
+
+	var x int
+	x = even(sum, 4,6,7,8,9,12)
+
+pointers
+	a :=32
+	b := &a	//b stores the address of a
+		//b is of type *int
+	b	//prints the address of a
+	*b	//prints the value 32
+	
