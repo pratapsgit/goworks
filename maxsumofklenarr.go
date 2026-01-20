@@ -1,5 +1,6 @@
 package main
 
+//Given an array of positive numbers and a positive number K, find the maximum sum of any contiguous subarray of size K.
 import (
 	"fmt"
 	"math"

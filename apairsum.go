@@ -1,5 +1,6 @@
 package main
 
+//Given an array of positive numbers and a positive number S, find the pairs with sum S with no duplicates.
 import (
 	"fmt"
 	"slices"
