@@ -1,5 +1,6 @@
 package main
 
+//Given an array of N elements and we need to find the square of the elements in the sorted order. Array contains both positive and negative numbers.
 import (
 	"fmt"
 	"slices"
